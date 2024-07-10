@@ -15,6 +15,7 @@ os.makedirs(output_annotation_dir, exist_ok=True)
 # Define target size for cropping
 target_size = 256
 
+# Adjust the boundary box for the annotations
 def adjust_bbox(bbox, crop_x, crop_y, crop_width, crop_height):
     x, y, w, h, score, category, truncation, occlusion = bbox
     new_x = max(x - crop_x, 0)
@@ -28,6 +29,7 @@ def adjust_bbox(bbox, crop_x, crop_y, crop_width, crop_height):
     
     return [new_x, new_y, new_w, new_h, score, category, truncation, occlusion]
 
+# Crop images and adjust the corresponding annotations
 def crop_and_adjust_annotations(image_path, annotation_path, output_image_dir, output_annotation_dir, target_size):
     # Load the image
     image = cv2.imread(image_path)
@@ -92,7 +94,7 @@ for image_name in os.listdir(input_image_dir):
     annotation_name = image_name.replace('.jpg', '.txt')
     annotation_path = os.path.join(input_annotation_dir, annotation_name)
     
-    # Check if the file is an image (you can add more extensions if needed)
+    # Check if the file is an image 
     if image_name.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.tiff', '.tif')):
         crop_and_adjust_annotations(image_path, annotation_path, output_image_dir, output_annotation_dir, target_size)
     else:

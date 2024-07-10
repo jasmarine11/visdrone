@@ -2,10 +2,11 @@ import os
 import cv2
 
 # Define paths 
-input_image_dir = '/Users/jasmine/Documents/Test_Images'
-input_annotation_dir = '/Users/jasmine/Documents/Test_Images/annotations'
-output_image_dir = '/Users/jasmine/Documents/Test_Images/cropped'
-output_annotation_dir = '/Users/jasmine/Documents/Test_Images/new_annotations'
+# || Edit your directories here! ||
+input_image_dir = '/Users/Your_directory'
+input_annotation_dir = '/Users/Your_directory'
+output_image_dir = '/Users/Your_directory'
+output_annotation_dir = '/Users/Your_directory'
 
 # Ensure output directories exist
 os.makedirs(output_image_dir, exist_ok=True)
